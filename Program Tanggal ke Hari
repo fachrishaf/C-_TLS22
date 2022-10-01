@@ -1,0 +1,53 @@
+//program untuk menentukan hari pada saat tanggal tertentu. jangkauan dekat ke depan, peruntukannya adalah ketika melihat tanggal dengan agenda tertentu di masa depan, supaya tahu hari apa itu.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+  int tahun, bulan, tanggal, stahun, jhari=0, hari;//stahun = selisih tahun. yaitu, tahun dikurangi 2022. jhari = jumlah hari dari 1-1-2022. hari = mod 7 dari jumlah hari. diketahui tanggal 1-1-2022 adalah hari sabtu. 
+  cout << "Masukkan tanggal(1-31): \n";
+  cin >> tanggal;
+  cout << "Masukkan bulan(1-12): \n";
+  cin >> bulan;
+  cout << "Masukkan tahun(2022-): \n";
+  cin >> tahun;
+
+  stahun = tahun-2022;
+
+  int ckabisat;//ckabisat = cek kabisat = stahun + 2 karena kabisat pertama setelah 2022 adalah 2024
+
+  ckabisat = stahun+2;
+
+  jhari = (365*stahun) + tanggal + (ckabisat/4); 
+
+  switch(bulan){
+    case 1 : jhari+=0; break;
+    case 2 : jhari+=31; break;
+    case 3 : jhari+=59; break;
+    case 4 : jhari+=90; break;
+    case 5 : jhari+=120; break;
+    case 6 : jhari+=151; break;
+    case 7 : jhari+=181; break;
+    case 8 : jhari+=212; break;
+    case 9 : jhari+=243; break;
+    case 10 : jhari+=273; break;
+    case 11 : jhari+=304; break;
+    case 12 : jhari+=334; break;
+    
+  }
+
+  hari = jhari%7;
+
+  switch(hari){
+    case 0 : cout <<"\n\tjumat"; break;
+    case 1 : cout <<"\n\tsabtu"; break;
+    case 2 : cout <<"\n\tminggu"; break;
+    case 3 : cout <<"\n\tsenin"; break;
+    case 4 : cout <<"\n\tselasa"; break;
+    case 5 : cout <<"\n\trabu"; break;
+    case 6 : cout <<"\n\tkamis"; break;
+  }
+
+  
+  return 0;
+}
